@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Join a Game</title>
+        {% load staticfiles%}
+        <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
+        <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'gameapp/js/jquery.tablesorter.min.js' %}"></script> 
+        <script type="text/javascript">
+          $(document).ready(function() { 
+            $("#myTable").tablesorter(); 
+            $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} );
+          }); 
+        </script>
+
+    <body id="join_wrapper">
+        <div class="header z-depth-2">
+            <p class="white-text">GAME DASHBOARD</p>
+        </div>
+        <div class="row">
+          <div class="col s3"></div>
+          <div class="col s6 grey lighten-1 mycard">
+            <div>
+                <h4 class="white-text text-darken-4 center-align">Your Games</h4>
+                <table id="myTable" class="tablesorter highlight centered">
+                    <thead>
+                      <tr>
+                          <th>Activity</th>
+                          <th>Location</th>
+                          <th># of Players Requested</th>
+                          <th># of Players Joined</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for game in games %}
+                      <tr>
+                        <td><a href="/info/{{game.id}}">{{game.gametype.game}}</a></td>
+                        <td>{{game.gametype.location}}</td>
+                        <td>{{game.players}}</td>
+                        <td>{{game.game_joiner.all.count|add:"1"}}</td>
+                      </tr>
+                    {% endfor %}
+                    {% for joiner in joiners %}
+                      <tr>
+                        <td><a href="/info/{{joiner.id}}">{{joiner.gametype.game}}</td>
+                        <td>{{joiner.gametype.location}}</td>
+                        <td>{{joiner.players}}</td>
+                        <td>{{joiner.game_joiner.all.count|add:"1"}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          <div class="col s3"></div>
+        </div>
+        <div class="row">
+          <div class="col s3"></div>
+          <div class="col s6 grey lighten-1 mycard">
+            <div class="highlight centered">
+              <h4 class="white-text text-darken-4 center-align">Games to Join</h4>
+              <table id="myTable" class="tablesorter highlight centered">
+                <thead>
+                  <tr>
+                      <th class="header headerSortDown">Activity</th>
+                      <th class="header headerSortDown">Location</th>
+                      <th class="header headerSortDown">Friend</th>
+                      <th class="header headerSortDown"># of Players Requested</th>
+                      <th class="header headerSortDown"># of Players Joined</th>
+                      <th class="header headerSortDown">Join</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for friend in friends %}
+                  <tr>
+                    <td><a href="/info/{{friend.id}}">{{friend.gametype.game}}</a></td>
+                    <td>{{friend.gametype.location}} </td>
+                    <td>{{friend.game_starter.first_name}} </td>
+                    <td>{{friend.players}} </td>
+                    <td>{{friend.game_joiner.all.count|add:"1"}}</td>
+                    <td><a href='{{friend.id}}'>Join</a></td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col s3"></div>
+        </div>
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s3">
+                <a href="{% url 'landing' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4">Go Back</a>
+            </div>
+            <div class="col s3">
+                <a href="{% url 'logout' %}" class=" welcomebtn waves-effect waves-light btn-large green accent-4">Log Off</a>
+            </div>
+            <div class="col s3"></div>
+        </div>
+    </body>
+</html>

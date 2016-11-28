@@ -1,0 +1,41 @@
+.error {
+	color: #ff9100;
+	margin-left: 20px;
+	line-height: 10px;
+	font-weight: bold;
+	font-size: .95em;
+}
+.form {
+	margin: 20px;
+	opacity: 0.75;
+}
+.form form{
+	margin: 20px;
+}
+#main {
+	background: url("../images/dawn-nature-sunset-trees-large50.jpg") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.header {
+	text-align: center;
+	margin-bottom: 50px;
+	padding: 10px;
+	background-color: #00c853;
+	opacity: 0.75;
+}
+.header p {
+	margin: 0;
+ 	font-weight: 500;
+	font-stretch: condensed;
+	font-style: italic;
+	font-size: 3.7rem;
+	text-align: center;
+	vertical-align: center;
+}
+.welcomebtn {
+	margin: 20px;
+	height: 500px;
+}

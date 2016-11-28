@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
+  </head>
+  <body id="landing_wrapper">
+    <div class="header z-depth-2">
+      <div class="row">
+        <p class="white-text">SPORTS PLANNER</p>
+      </div>
+    </div>
+        <div class="row">
+        <div class="col s3"></div>
+        <div class="col s6 sporticon">
+            <div class="sport-image">
+                <img src="/static/gameapp/images/football.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/soccer.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/basketball.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/volleyball.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/pokemon.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/baseball.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/frisbee.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/running.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/rugby.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/walking.png">
+            </div>
+        </div>
+        <div class="col s3"></div>
+    </div>
+    <div class="row">
+      <div class="col s3"></div>
+      <div class="col s3">
+        <a href="{% url 'join' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4"><i class="material-icons right">group_work</i>Join</a>
+      </div> 
+      <div class="col s3">
+        <a href="{% url 'start' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4"><i class="material-icons right">play_circle_filled</i>Start</a>
+      </div>
+      <div class="col s3"></div>
+    </div>
+    <div class="row">
+      <div class="col s3"></div>
+      <div class="col s12 m6">
+        <div class="card mycard grey lighten-3">
+          <div class="card-content green-text text-darken-3">
+            <span class="card-title"><h5>Use Sport Planner to Connect with Others!</h5></span>
+            <p>With this app, you can plan and join sports in parks across Bellevue!</p>
+            <p>The links will take you to a pages where you can select a game or other physical activity you want to share with others! Join an existing game or start a new one.</p>
+          </div>
+          <div class="card-action">
+            <a href="{% url 'join' %}" class="orange-text text-accent-4">Join</a><a href="{% url 'start' %}" class="orange-text text-accent-4">Start</a><a href="{% url 'logout' %}" class="orange-text text-accent-4">Log Off</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s3"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Start a Game</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'gameapp/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Materialize.updateTextFields();
+            $('select').material_select();
+        });
+    </script>
+    </head>
+    <body id="start_wrapper">
+    <div class="header z-depth-2">
+      <p class="white-text">LET'S GET STARTED!</p>
+    </div>
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s6 sporticon">
+            <div class="sport-image">
+                <img src="/static/gameapp/images/football.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/soccer.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/basketball.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/volleyball.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/pokemon.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/baseball.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/frisbee.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/running.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/rugby.png">
+            </div>
+            <div class="sport-image">
+                <img src="/static/gameapp/images/walking.png">
+            </div>
+        </div>
+        <div class="col s3"></div>
+    </div>
+    <div class="row">
+      <div class="col s3"></div>
+          <div class="card-panel grey lighten-3 form col s6">
+            <form action="/start_game" method="post">
+            {% csrf_token %}
+                <h6 class="green-text text-accent-4">Select a Game and Location</h6>
+                <select name="gametype_selection" class="icons">
+                {% for gametype in gametypes %}
+                  <option value='{{gametype.id}}'>{{gametype.game}} @ {{gametype.location}}</option>
+                {% endfor %}
+                </select>
+                <h6 class="green-text text-accent-4">Select a Date</h6>
+                <select name='players' type='text'>
+                    <option value="1">1 player</option>
+                    <option value="2">2 players</option>
+                    <option value="3">3 players</option>
+                    <option value="4">4 players</option>
+                    <option value="5">5 players</option>
+                    <option value="6">6 players</option>
+                    <option value="7">7 players</option>
+                    <option value="8">8 players</option>
+                    <option value="9">9 players</option>
+                    <option value="10">10 players</option>
+                    <option value="11">11 players</option>
+                    <option value="12">12 players</option>
+                    <option value="13">13 players</option>
+                    <option value="14">14 players</option>
+                    <option value="15">15 players</option>
+                </select><br>
+                <div class="row">
+                    <div class="col s6">
+                        <h6 class="green-text text-accent-4">Select a Date</h6>
+                        <input type="date" name="date"><br>
+                    </div>
+                    <div class="col s6">
+                        <h6 class="green-text text-accent-4">Select a Time</h6>
+                        <input type="time" name="time"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3"></div>
+                    <div class="col s6">
+                     <button class="btn waves-effect waves-light green accent-4 btn-stretch" type="submit" name="action">Start
+                      <i class="material-icons right">play_circle_filled</i>
+                    </div>
+                    <div class="col s3"></div>
+                </div>
+                <a href="{% url 'landing' %}" class="orange-text text-accent-4">GO BACK</a>
+                <a href="{% url 'logout' %}" class="orange-text text-accent-4 right align">LOG OFF</a>
+            </form>
+          </div>
+      <div class="col s3"></div>
+    </div>
+    <div class="valign-wrapper">
+        <div class="row">
+            <div class="col s12">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error center-align">{{ message.message }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
